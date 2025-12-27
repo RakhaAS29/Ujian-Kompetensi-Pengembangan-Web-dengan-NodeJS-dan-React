@@ -13,7 +13,6 @@ pool.getConnection()
 
 app.use(cors());
 app.use(express.json());
-// parse application/x-www-form-urlencoded (for HTML form submits or some frontends)
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES

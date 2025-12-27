@@ -1,6 +1,5 @@
 const pool = require("../config/db");
 
-// helper: format date value to dd/mm/yyyy (handles Date or string 'YYYY-MM-DD')
 const formatDateToDDMMYYYY = (val) => {
   if (!val) return null;
   if (typeof val === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(val)) {

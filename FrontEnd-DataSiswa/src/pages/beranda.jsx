@@ -48,14 +48,13 @@ export default function DaftarSiswa() {
                 nama,
                 alamat,
                 jurusan: jurusan,
-                // send date as a plain string (YYYY-MM-DD) to avoid timezone/serialization issues
                 tgl_lahir: tgl_lahir,
             })
             .then(() => {
                 fetchData();
             })
             .catch((err) => {
-                // log server error for debugging (shows validation message or details)
+                // log server error
                 console.error("POST /api/DataSiswa error:", err.response?.data || err.message);
             })
             .finally(() => {
@@ -119,10 +118,8 @@ export default function DaftarSiswa() {
         modal.show();
     };
 
-    // Convert server date (ISO or YYYY-MM-DD) to display format dd/mm/yyyy
     const formatDisplayDate = (value) => {
         if (!value) return "";
-        // If already in YYYY-MM-DD (no time), just reformat
         if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
             const [y, m, d] = value.split("-");
             return `${d}/${m}/${y}`;
@@ -135,7 +132,6 @@ export default function DaftarSiswa() {
         return `${dd}/${mm}/${yyyy}`;
     };
 
-    // Convert server ISO (or other) to input[type=date] value (YYYY-MM-DD) using local date
     const convertToInputDate = (value) => {
         if (!value) return "";
         if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
@@ -157,7 +153,6 @@ export default function DaftarSiswa() {
                 nama: editNama,
                 alamat: editAlamat,
                 jurusan: editjurusan,
-                // send date as plain string
                 tgl_lahir: edittgl_lahir,
             })
             .then(() => {
